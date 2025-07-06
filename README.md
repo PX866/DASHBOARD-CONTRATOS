@@ -6,7 +6,7 @@ Dashboard profissional interativo para gestão de contratos do CFOAB com nova se
 
 ### **Sistema de Autenticação**
 - Tela de login segura
-- Credenciais: **GOF** / **@Oab2025**
+- Credenciais: **** / ****
 - Logo oficial da OAB Nacional integrada
 
 ### **Dashboard Principal - Contratos CFOAB**
