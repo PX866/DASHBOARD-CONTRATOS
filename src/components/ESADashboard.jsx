@@ -16,12 +16,11 @@ const ESADashboard = ({ onLogout, onNavigateBack }) => {
   ]);
 
   // Filtrar apenas contratos ativos
-  const activeContracts = useMemo(() => {
-    return esaContractsData.filter(contract =>
-      ['VIGENTE', 'VENCIMENTO PROXIMO', 'VENCIDO'].includes(contract.STATUS)
-    );
-  }, []);
-  
+    // Não filtrar contratos, listar todos
+    const activeContracts = useMemo(() => {
+      return esaContractsData; // Retorna todos os contratos sem filtro
+    }, []);
+    
   // Função para criar link do protocolo
   const createProtocolLink = (protocol) => {
     if (!protocol || protocol === 'N/A') return null;
