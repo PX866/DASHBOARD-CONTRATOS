@@ -104,6 +104,28 @@ const Dashboard = ({ onLogout, onNavigateToESA }) => {
     });
   }, [filters]);
 
+
+
+  // NOVO: Calcular os totais
+  const totalValorContrato = useMemo(() => {
+    return filteredData.reduce((sum, item) => {
+      const valor = parseFloat(item['VALOR CONTRATO']) || 0;
+      return sum + valor;
+    }, 0);
+  }, [filteredData]);
+
+  const totalValorPago = useMemo(() => {
+    return filteredData.reduce((sum, item) => {
+      const valor = parseFloat(item['VALOR']) || 0;
+      return sum + valor;
+    }, 0);
+  }, [filteredData]);
+
+
+
+
+
+
   // Limpar filtros
   const clearFilters = () => {
     setFilters({
@@ -114,6 +136,10 @@ const Dashboard = ({ onLogout, onNavigateToESA }) => {
       status: 'todos'
     });
   };
+
+
+ 
+
 
   // Exportar para Excel
   const exportToExcel = () => {
@@ -337,7 +363,7 @@ const Dashboard = ({ onLogout, onNavigateToESA }) => {
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg font-semibold">
-                Resultados ({filteredData.length} contratos)
+                Resultados ({filteredData.length} contratos) — Total Contrato: {formatCurrency(totalValorContrato)} | Total Últimos Pagamentos Realizados: {formatCurrency(totalValorPago)}
               </CardTitle>
               <div className="flex space-x-2">
                 <Button onClick={handlePrint} variant="outline" size="sm">
